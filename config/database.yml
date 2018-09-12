@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: school_connect
+  pool: 5
+  usernamename: username
+  password:
+  host: localhost
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: school_connect_test
+  pool: 5
+  usernamename: username
+  password:
+  host: localhost
+  timeout: 5000
