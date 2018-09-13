@@ -1,0 +1,8 @@
+nav.navbar
+  ul.nav.flex-column
+    li.nav-item
+      = link_to root_path, class: 'nav-link' do
+        = fa_icon 'home', text: 'Dashboard'
+    li.nav-item
+      = link_to admins_schools_path, class: 'nav-link' do
+        = fa_icon 'institution', text: 'Manage Schools'

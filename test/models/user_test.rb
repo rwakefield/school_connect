@@ -31,16 +31,4 @@ describe 'User' do
       user.errors.full_messages.must_equal ['Email is invalid']
     end
   end
-
-  describe '#admin?' do
-    it 'will not be an admin by default' do
-      user = create :user
-      user.admin?.must_equal false
-    end
-
-    it 'will be an admin if admin is set to true' do
-      user = create :user, :admin
-      user.admin?.must_equal true
-    end
-  end
 end

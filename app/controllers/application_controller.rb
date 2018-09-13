@@ -1,12 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_user!
 
   layout :layout
 
   private
 
   def layout
-    current_user ? 'application' : 'devise'
+    if current_admin
+      'admin'
+    elsif current_user
+      'application'
+    else
+      'devise'
+    end
   end
 end

@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Admin: School Connect
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    nav.navbar.navbar-dark.sticky-top.bg-dark.row
+      .col-10
+        = link_to 'School Connect', root_path, class: 'navbar-brand'
+      .col-2.float-right
+        = link_to destroy_admin_session_path, method: :delete do
+          = fa_icon('sign-out', text: 'Logout')
+
+    #main-container.container-fluid
+      .row
+        .col-3.sidebar
+          = render partial: 'admin_sidebar'
+
+        .col-9
+          = render partial: 'flash_messages'
+          #view-content.container
+            = yield
+  footer.footer
+    .container
+      span.text-muted
+        = link_to 'https://github.com/rwakefield/school_connect' do
+          = fa_icon 'github', text: 'View Source'

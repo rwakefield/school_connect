@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root controller: :dashboard, action: :index
-  resources :schools
+  devise_for :users, path: 'users', controllers: { sessions: 'users/sessions' }
+  devise_for :admins, path: 'admins', controllers: { sessions: 'admins/sessions' }
+
+  authenticated :admin do
+    namespace :admins do
+      root 'dashboard#index'
+      resources :schools
+    end
+  end
+
+  authenticated :user do
+    root 'dashboard#index'
+    resources :schools, only: [:index, :show]
+  end
+
+  root 'dashboard#index'
 end
