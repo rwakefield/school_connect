@@ -19,11 +19,7 @@ html
     #main-container.container-fluid
       .row
         .col-2.sidebar
-          nav.navbar
-            ul.nav.flex-column
-              li.nav-item
-                = link_to root_path, class: 'nav-link' do
-                  = fa_icon 'home', text: 'Dashboard'
+          = render partial: 'sidebar'
 
         .col-10
           = render partial: 'flash_messages'
