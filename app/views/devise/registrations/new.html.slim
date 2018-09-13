@@ -1,0 +1,10 @@
+h3
+  | Sign up
+
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-signin' }) do |f|
+  = f.input :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', label: false
+  = f.input :password, autocomplete: 'new-password', placeholder: 'Password', label: false
+  = f.input :password_confirmation, autocomplete: 'new-password', placeholder: 'Password Confirmation', label: false
+  = f.button :submit, 'Sign up', class: 'btn btn-sm btn-primary btn-block'
+
+= render 'devise/shared/links'

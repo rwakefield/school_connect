@@ -53,9 +53,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # added by me
+gem 'devise'
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
 gem 'minitest-rails'
+gem 'simple_form'
 gem 'slim'
 
 group :development do

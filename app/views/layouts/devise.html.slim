@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title School Connect
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body.text-center
+    .container-fluid
+      .row
+        .col-1
+          br
+        .col-10
+          = render partial: 'flash_messages'
+          #view-content
+            = yield
+        .col-1
+          br

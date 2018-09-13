@@ -1,0 +1,12 @@
+h3
+  | Please Sign In
+
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-signin' }) do |f|
+  = f.input :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', label: false
+  = f.input :password, autocomplete: 'current-password', placeholder: 'Password', label: false
+  - if devise_mapping.rememberable?
+    .checkbox
+      = f.input :remember_me, inline_label: 'Remember Me', as: :boolean
+  = f.button :submit, 'Login', class: 'btn btn-sm btn-primary btn-block'
+
+= render 'devise/shared/links'

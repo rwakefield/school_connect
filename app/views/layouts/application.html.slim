@@ -8,8 +8,13 @@ html
 
   body
     nav.navbar.navbar-dark.sticky-top.bg-dark.row
-      .col-12
+      .col-10
         = link_to 'School Connect', root_path, class: 'navbar-brand'
+      .col-2.float-right
+        = link_to edit_user_registration_path do
+          = fa_icon('user-circle-o', text: 'User')
+        = link_to destroy_user_session_path, method: :delete do
+          = fa_icon('sign-out', text: 'Logout')
 
     #main-container.container-fluid
       .row
@@ -21,12 +26,7 @@ html
                   = fa_icon 'home', text: 'Dashboard'
 
         .col-10
-          #flash-messages
-            - flash.each do |key, value|
-              div class="alert alert-warning alert-dismissible alert-#{key} fade show" role="alert"
-                = value
-                button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                  <span aria-hidden="true">&times;</span>
+          = render partial: 'flash_messages'
           #view-content.container
             = yield
   footer.footer

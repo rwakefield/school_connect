@@ -1,0 +1,10 @@
+h3
+  | Change your password
+
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-signin' }) do |f|
+  = f.hidden_field :reset_password_token
+  = f.input :password, autofocus: true, autocomplete: 'new-password', placeholder: 'Password', label: false
+  = f.input :password_confirmation, autocomplete: 'off', placeholder: 'Password Confirmation', label: false
+  = f.button :submit, 'Change my password', class: 'btn btn-sm btn-primary btn-block'
+
+= render 'devise/shared/links'

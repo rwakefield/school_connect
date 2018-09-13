@@ -7,6 +7,14 @@ body {
   margin-bottom: 60px;
 }
 
+form {
+  margin-bottom: 15px;
+}
+
+form .btn {
+  margin-right: 15px;
+}
+
 h2 {
   margin-bottom: 15px;
 }
@@ -39,6 +47,25 @@ h2 {
   width: 100%;
 }
 
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox input {
+  margin-right: 5px;
+}
+
+.form-signin .invalid-feedback {
+  text-align: left;
+}
+
+.form-text {
+  margin-bottom: 15px;
+}
+
 .pagination a, .pagination em, .pagination span {
   padding: 5px;
 }
@@ -49,6 +76,11 @@ h2 {
 
 .sticky-top input, .sticky-top label {
   margin-right: 5px;
+}
+
+.sticky-top a {
+  margin-left: 10px;
+  color: #fff;
 }
 
 .sticky-top label {
