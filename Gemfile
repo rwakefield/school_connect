@@ -61,6 +61,7 @@ gem 'simple_form'
 gem 'slim'
 
 group :development do
+  gem 'activerecord_sane_schema_dumper'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'guard'
