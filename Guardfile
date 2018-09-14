@@ -1,4 +1,6 @@
 guard :minitest do
+  watch(%r{^app/controllers/(.*)\.rb$}) { |m| "test/controllers/#{m[1]}_test.rb" }
+  watch(%r{^test/controllers/(.*)\.rb$}) { |m| "test/controllers/#{m[1]}.rb" }
   watch(%r{^app/models/(.*)\.rb$}) { |m| "test/models/#{m[1]}_test.rb" }
   watch(%r{^test/models/(.*)\.rb$}) { |m| "test/models/#{m[1]}.rb" }
   watch(%r{^app/presenters/(.*)\.rb$}) { |m| "test/presenters/#{m[1]}_test.rb" }

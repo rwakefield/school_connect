@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root 'dashboard#index'
-    resources :schools, only: [:index, :show]
   end
+
+  resources :schools, only: [:index, :show]
 
   root 'dashboard#index'
 end
