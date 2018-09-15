@@ -13,7 +13,7 @@ As stated before, you will be able to post messages to a users dashboard using t
 - [x] Seed database with some schools
 - [ ] Add rake task to create admin users (can only be added from the database)
 - [x] Add pagination to the schools view
-- [ ] Add pagination to the get schools api
+- [x] Add pagination to the get schools api
 - [ ] Associate user with school on login
 - [ ] Create messages table
 - [ ] Associate messages table with users school
@@ -35,18 +35,152 @@ For the API I am going with a RESTful API design that will return JSON. I will b
 ```json
 {
     "_links": {
-        "self": "http://localhost:3000/api/v1/schools"
+        "self": "http://localhost:3000/api/v1/schools?page=1",
+        "next": "http://localhost:3000/api/v1/schools?page=2"
     },
-    "totalCount=": 1,
+    "perPage=": "10",
+    "totalPages=": "10",
+    "totalCount=": "100",
     "_embedded": {
         "schools": [
             {
                 "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/6"
+                    "self": "http://localhost:3000/api/v1/schools/145"
                 },
-                "name": "My School is Cool",
-                "created_at": "2018-09-13T19:08:29.802Z",
-                "updated_at": "2018-09-13T23:55:29.770Z"
+                "name": "Massachusetts Institute of Technology (MIT)",
+                "created_at": "2018-09-15T17:52:05.625Z",
+                "updated_at": "2018-09-15T17:52:05.625Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/146"
+                },
+                "name": "Stanford University",
+                "created_at": "2018-09-15T17:52:05.629Z",
+                "updated_at": "2018-09-15T17:52:05.629Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/147"
+                },
+                "name": "Harvard University",
+                "created_at": "2018-09-15T17:52:05.632Z",
+                "updated_at": "2018-09-15T17:52:05.632Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/148"
+                },
+                "name": "California Institute of Technology (Caltech)",
+                "created_at": "2018-09-15T17:52:05.635Z",
+                "updated_at": "2018-09-15T17:52:05.635Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/149"
+                },
+                "name": "University of Chicago",
+                "created_at": "2018-09-15T17:52:05.637Z",
+                "updated_at": "2018-09-15T17:52:05.637Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/150"
+                },
+                "name": "Princeton University",
+                "created_at": "2018-09-15T17:52:05.640Z",
+                "updated_at": "2018-09-15T17:52:05.640Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/151"
+                },
+                "name": "Cornell University",
+                "created_at": "2018-09-15T17:52:05.643Z",
+                "updated_at": "2018-09-15T17:52:05.643Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/152"
+                },
+                "name": "Yale University",
+                "created_at": "2018-09-15T17:52:05.645Z",
+                "updated_at": "2018-09-15T17:52:05.645Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/153"
+                },
+                "name": "Columbia University",
+                "created_at": "2018-09-15T17:52:05.648Z",
+                "updated_at": "2018-09-15T17:52:05.648Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/154"
+                },
+                "name": "University of Pennsylvania",
+                "created_at": "2018-09-15T17:52:05.650Z",
+                "updated_at": "2018-09-15T17:52:05.650Z"
+            }
+        ]
+    }
+}
+```
+
+* GET => http://localhost:3000/api/v1/schools?page=5&per_page=5
+
+```json
+{
+    "_links": {
+        "self": "http://localhost:3000/api/v1/schools?page=5",
+        "prev": "http://localhost:3000/api/v1/schools?page=4",
+        "next": "http://localhost:3000/api/v1/schools?page=6"
+    },
+    "perPage=": "5",
+    "totalPages=": "20",
+    "totalCount=": "100",
+    "_embedded": {
+        "schools": [
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/165"
+                },
+                "name": "Brown University",
+                "created_at": "2018-09-15T17:52:05.680Z",
+                "updated_at": "2018-09-15T17:52:05.680Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/166"
+                },
+                "name": "University of Texas at Austin",
+                "created_at": "2018-09-15T17:52:05.683Z",
+                "updated_at": "2018-09-15T17:52:05.683Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/167"
+                },
+                "name": "University of Washington",
+                "created_at": "2018-09-15T17:52:05.686Z",
+                "updated_at": "2018-09-15T17:52:05.686Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/168"
+                },
+                "name": "Georgia Institute of Technology",
+                "created_at": "2018-09-15T17:52:05.689Z",
+                "updated_at": "2018-09-15T17:52:05.689Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/169"
+                },
+                "name": "University of Illinois at Urbana-Champaign",
+                "created_at": "2018-09-15T17:52:05.693Z",
+                "updated_at": "2018-09-15T17:52:05.693Z"
             }
         ]
     }
