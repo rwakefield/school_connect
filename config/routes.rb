@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :schools, only: [:index, :show]
+    end
+  end
+
   devise_for :users, path: 'users', controllers: { sessions: 'users/sessions' }
   devise_for :admins, path: 'admins', controllers: { sessions: 'admins/sessions' }
 
