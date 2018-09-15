@@ -10,7 +10,7 @@ The idea behind this application is to model a school system (schools, classroom
 
 As stated before, you will be able to post messages to a users dashboard using the API. I have plans to develop a second app (will start once I get this into a state where I can actually post messages to the schools dashboard locally) so that I can test cross browser security with my API. Additionally, I plan on setting up an email server using this second app to send emails to the teachers and parents, because why not.
 
-- [ ] Seed database with some schools
+- [x] Seed database with some schools
 - [ ] Add rake task to create admin users (can only be added from the database)
 - [ ] Add pagination to the schools view
 - [ ] Add pagination to the get schools api
