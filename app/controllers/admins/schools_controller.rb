@@ -2,7 +2,7 @@ class Admins::SchoolsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @schools = School.all
+    @schools = School.all.paginate(page: params[:page])
   end
 
   def new

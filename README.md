@@ -12,7 +12,7 @@ As stated before, you will be able to post messages to a users dashboard using t
 
 - [x] Seed database with some schools
 - [ ] Add rake task to create admin users (can only be added from the database)
-- [ ] Add pagination to the schools view
+- [x] Add pagination to the schools view
 - [ ] Add pagination to the get schools api
 - [ ] Associate user with school on login
 - [ ] Create messages table

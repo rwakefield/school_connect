@@ -5,6 +5,7 @@ h3
   .lead
     | There are no schools to display
 - else
+  = will_paginate @schools
   table.table.table-sm.table-striped.table-bordered
     thead
       tr

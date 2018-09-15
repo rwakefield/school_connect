@@ -59,6 +59,7 @@ gem 'jquery-ui-rails'
 gem 'minitest-rails'
 gem 'simple_form'
 gem 'slim'
+gem 'will_paginate'
 
 group :development do
   gem 'activerecord_sane_schema_dumper'
