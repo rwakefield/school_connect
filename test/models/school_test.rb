@@ -6,14 +6,25 @@ describe 'School' do
     school.valid?.must_equal true
   end
 
-  it 'must have many users through user connectors' do
-    create :user_connector
-    school = School.first
-    user = User.first
+  describe 'relations' do
+    it 'must have many users through user connectors' do
+      create :user_connector
+      school = School.first
+      user = User.first
 
-    school.users.must_equal [user]
-    School.count.must_equal 1
-    User.count.must_equal 1
+      school.users.must_equal [user]
+      School.count.must_equal 1
+      User.count.must_equal 1
+    end
+  end
+
+  describe 'dependent data' do
+    it 'must remove related user_connectors when self is destroyed' do
+      create :user_connector
+      school = School.first
+      school.destroy
+      UserConnector.count.must_equal 0
+    end
   end
 
   describe 'validations' do

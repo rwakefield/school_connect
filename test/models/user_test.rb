@@ -18,6 +18,16 @@ describe 'User' do
     end
   end
 
+  describe 'dependent data' do
+    it 'will remove related user_connectors when self is destroyed' do
+      create :user_connector
+      user = User.first
+      user.destroy
+      User.count.must_equal 0
+      UserConnector.count.must_equal 0
+    end
+  end
+
   describe 'validations' do
     it 'must validate presence of email' do
       user = build :user, email: nil
