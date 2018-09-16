@@ -6,6 +6,14 @@ This is a demo app I am working on that will highlight some common features in t
 
 The idea behind this application is to model a school system (schools, classrooms, teachers, students, parents) and provide a message passing system using an API to post messages and make them appear on the “Dashboard” of the logged in user depending on their associations in Rails (a message post to the school will make the message appear on the dashboard to all users associated to that school). Only admin users will have access to create update and delete school info.
 
+## Setup Locally
+
+```bash
+rake db:setup
+rake admin_creator:create[YOUR_EMAIL,YOUR_PASSWORD]
+rails s
+```
+
 ## Where is this going?
 
 As stated before, you will be able to post messages to a users dashboard using the API. I have plans to develop a second app (will start once I get this into a state where I can actually post messages to the schools dashboard locally) so that I can test cross browser security with my API. Additionally, I plan on setting up an email server using this second app to send emails to the teachers and parents, because why not.
