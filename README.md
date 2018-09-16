@@ -35,6 +35,9 @@ As stated before, you will be able to post messages to a users dashboard using t
 - [x] Create dashboard section for school messages
 - [x] Display messages on the school show page
 - [x] Restrict messages show to filter user schools
+- [x] Get school messages api
+- [x] Get school message api
+- [x] Link to messages api on school api
 - [ ] Post messages locally using api
 - [ ] Allow admins to delete messages
 - [ ] Build second app to post messages to schools (not sure exactly what this will look like)
@@ -48,112 +51,13 @@ For the API I am going with a RESTful API design that will return JSON. I will b
 
 #### Working APIs
 
-* GET => http://localhost:3000/api/v1/schools
+* GET => http://localhost:3000/api/v1/schools?per_page=5
 
 ```json
 {
     "_links": {
         "self": "http://localhost:3000/api/v1/schools?page=1",
         "next": "http://localhost:3000/api/v1/schools?page=2"
-    },
-    "perPage=": "10",
-    "totalPages=": "10",
-    "totalCount=": "100",
-    "_embedded": {
-        "schools": [
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/145"
-                },
-                "name": "Massachusetts Institute of Technology (MIT)",
-                "created_at": "2018-09-15T17:52:05.625Z",
-                "updated_at": "2018-09-15T17:52:05.625Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/146"
-                },
-                "name": "Stanford University",
-                "created_at": "2018-09-15T17:52:05.629Z",
-                "updated_at": "2018-09-15T17:52:05.629Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/147"
-                },
-                "name": "Harvard University",
-                "created_at": "2018-09-15T17:52:05.632Z",
-                "updated_at": "2018-09-15T17:52:05.632Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/148"
-                },
-                "name": "California Institute of Technology (Caltech)",
-                "created_at": "2018-09-15T17:52:05.635Z",
-                "updated_at": "2018-09-15T17:52:05.635Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/149"
-                },
-                "name": "University of Chicago",
-                "created_at": "2018-09-15T17:52:05.637Z",
-                "updated_at": "2018-09-15T17:52:05.637Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/150"
-                },
-                "name": "Princeton University",
-                "created_at": "2018-09-15T17:52:05.640Z",
-                "updated_at": "2018-09-15T17:52:05.640Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/151"
-                },
-                "name": "Cornell University",
-                "created_at": "2018-09-15T17:52:05.643Z",
-                "updated_at": "2018-09-15T17:52:05.643Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/152"
-                },
-                "name": "Yale University",
-                "created_at": "2018-09-15T17:52:05.645Z",
-                "updated_at": "2018-09-15T17:52:05.645Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/153"
-                },
-                "name": "Columbia University",
-                "created_at": "2018-09-15T17:52:05.648Z",
-                "updated_at": "2018-09-15T17:52:05.648Z"
-            },
-            {
-                "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/154"
-                },
-                "name": "University of Pennsylvania",
-                "created_at": "2018-09-15T17:52:05.650Z",
-                "updated_at": "2018-09-15T17:52:05.650Z"
-            }
-        ]
-    }
-}
-```
-
-* GET => http://localhost:3000/api/v1/schools?page=5&per_page=5
-
-```json
-{
-    "_links": {
-        "self": "http://localhost:3000/api/v1/schools?page=5",
-        "prev": "http://localhost:3000/api/v1/schools?page=4",
-        "next": "http://localhost:3000/api/v1/schools?page=6"
     },
     "perPage=": "5",
     "totalPages=": "20",
@@ -162,61 +66,145 @@ For the API I am going with a RESTful API design that will return JSON. I will b
         "schools": [
             {
                 "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/165"
+                    "self": "http://localhost:3000/api/v1/schools/1",
+                    "messages": "http://localhost:3000/api/v1/schools/1/messages"
                 },
-                "name": "Brown University",
-                "created_at": "2018-09-15T17:52:05.680Z",
-                "updated_at": "2018-09-15T17:52:05.680Z"
+                "name": "Massachusetts Institute of Technology (MIT)",
+                "created_at": "2018-09-16T04:21:10.530Z",
+                "updated_at": "2018-09-16T04:21:10.530Z"
             },
             {
                 "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/166"
+                    "self": "http://localhost:3000/api/v1/schools/2",
+                    "messages": "http://localhost:3000/api/v1/schools/2/messages"
                 },
-                "name": "University of Texas at Austin",
-                "created_at": "2018-09-15T17:52:05.683Z",
-                "updated_at": "2018-09-15T17:52:05.683Z"
+                "name": "Stanford University",
+                "created_at": "2018-09-16T04:21:10.540Z",
+                "updated_at": "2018-09-16T04:21:10.540Z"
             },
             {
                 "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/167"
+                    "self": "http://localhost:3000/api/v1/schools/3",
+                    "messages": "http://localhost:3000/api/v1/schools/3/messages"
                 },
-                "name": "University of Washington",
-                "created_at": "2018-09-15T17:52:05.686Z",
-                "updated_at": "2018-09-15T17:52:05.686Z"
+                "name": "Harvard University",
+                "created_at": "2018-09-16T04:21:10.549Z",
+                "updated_at": "2018-09-16T04:21:10.549Z"
             },
             {
                 "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/168"
+                    "self": "http://localhost:3000/api/v1/schools/4",
+                    "messages": "http://localhost:3000/api/v1/schools/4/messages"
                 },
-                "name": "Georgia Institute of Technology",
-                "created_at": "2018-09-15T17:52:05.689Z",
-                "updated_at": "2018-09-15T17:52:05.689Z"
+                "name": "California Institute of Technology (Caltech)",
+                "created_at": "2018-09-16T04:21:10.556Z",
+                "updated_at": "2018-09-16T04:21:10.556Z"
             },
             {
                 "_links": {
-                    "self": "http://localhost:3000/api/v1/schools/169"
+                    "self": "http://localhost:3000/api/v1/schools/5",
+                    "messages": "http://localhost:3000/api/v1/schools/5/messages"
                 },
-                "name": "University of Illinois at Urbana-Champaign",
-                "created_at": "2018-09-15T17:52:05.693Z",
-                "updated_at": "2018-09-15T17:52:05.693Z"
+                "name": "University of Chicago",
+                "created_at": "2018-09-16T04:21:10.560Z",
+                "updated_at": "2018-09-16T04:21:10.560Z"
             }
         ]
     }
 }
 ```
 
-* GET => http://localhost:3000/api/v1/schools/6
+* GET => http://localhost:3000/api/v1/schools/1
 
 ```json
 {
     "_links": {
-        "self": "http://localhost:3000/api/v1/schools/6"
+        "self": "http://localhost:3000/api/v1/schools/1",
+        "messages": "http://localhost:3000/api/v1/schools/1/messages"
     },
-    "name": "My School is Cool",
-    "created_at": "2018-09-13T19:08:29.802Z",
-    "updated_at": "2018-09-13T23:55:29.770Z"
+    "name": "Massachusetts Institute of Technology (MIT)",
+    "created_at": "2018-09-16T04:21:10.530Z",
+    "updated_at": "2018-09-16T04:21:10.530Z"
 }
 ```
+
+* GET => http://localhost:3000/api/v1/schools/1/messages?per_page=5
+
+```json
+{
+    "_links": {
+        "self": "http://localhost:3000/api/v1/schools/1/messages?page=1",
+        "next": "http://localhost:3000/api/v1/schools/1/messages?page=2"
+    },
+    "perPage=": "5",
+    "totalPages=": "3",
+    "totalCount=": "15",
+    "_embedded": {
+        "messages": [
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/1/messages/118"
+                },
+                "header": "Test Message 14",
+                "body": "The quick brown fox jumps over the lazy dog",
+                "created_at": "2018-09-16T18:58:19.838Z",
+                "updated_at": "2018-09-16T18:58:19.838Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/1/messages/117"
+                },
+                "header": "Test Message 13",
+                "body": "The quick brown fox jumps over the lazy dog",
+                "created_at": "2018-09-16T18:58:19.835Z",
+                "updated_at": "2018-09-16T18:58:19.835Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/1/messages/116"
+                },
+                "header": "Test Message 12",
+                "body": "The quick brown fox jumps over the lazy dog",
+                "created_at": "2018-09-16T18:58:19.831Z",
+                "updated_at": "2018-09-16T18:58:19.831Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/1/messages/115"
+                },
+                "header": "Test Message 11",
+                "body": "The quick brown fox jumps over the lazy dog",
+                "created_at": "2018-09-16T18:58:19.827Z",
+                "updated_at": "2018-09-16T18:58:19.827Z"
+            },
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/1/messages/114"
+                },
+                "header": "Test Message 10",
+                "body": "The quick brown fox jumps over the lazy dog",
+                "created_at": "2018-09-16T18:58:19.820Z",
+                "updated_at": "2018-09-16T18:58:19.820Z"
+            }
+        ]
+    }
+}
+```
+
+* GET => http://localhost:3000/api/v1/schools/1/messages/118
+
+```json
+{
+    "_links": {
+        "self": "http://localhost:3000/api/v1/schools/1/messages/118"
+    },
+    "header": "Test Message 14",
+    "body": "The quick brown fox jumps over the lazy dog",
+    "created_at": "2018-09-16T18:58:19.838Z",
+    "updated_at": "2018-09-16T18:58:19.838Z"
+}
+```
+
 
 ## How I work
 
