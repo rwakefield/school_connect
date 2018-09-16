@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :schools, only: [:index, :show]
       resources :schools do
-        resources :messages, only: [:index, :show, :create]
+        resources :messages, only: [:index, :show, :create, :update]
       end
     end
   end

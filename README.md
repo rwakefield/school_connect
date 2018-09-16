@@ -39,7 +39,7 @@ As stated before, you will be able to post messages to a users dashboard using t
 - [x] Get school message api
 - [x] Link to messages api on school api
 - [x] Post messages locally using api
-- [ ] Patch messages locally using api
+- [x] Patch messages locally using api
 - [ ] Delete messages locally using api
 - [ ] Allow admins to delete messages
 - [ ] Build second app to post messages to schools (not sure exactly what this will look like)
@@ -210,9 +210,14 @@ For the API I am going with a RESTful API design that will return JSON. I will b
 * POST => http://localhost:3000/api/v1/schools/2/messages
 
 ```json
-{"message": { "header": "This is the header", "body": "This is the body"} }
+{"message": { "header": "This is the header", "body": "This is the body" } }
 ```
 
+* PATCH => http://localhost:3000/api/v1/schools/30/messages/123
+
+```json
+{"message": { "header": "updated header", "body": "updated body" } }
+```
 
 ## How I work
 

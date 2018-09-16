@@ -28,4 +28,15 @@ class Api::V1::MessagesControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  describe 'PATCH #update' do
+    it 'will redirect to the message api when successul' do
+      FactoryBot.create(:school_message)
+      school = School.first
+      message = Message.first
+      params = { message: { header: 'new header'} }
+      patch api_v1_school_message_url(school, message, format: :json), params: params
+      assert_redirected_to api_v1_school_message_url(school, message, format: :json)
+    end
+  end
 end
