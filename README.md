@@ -13,6 +13,11 @@ rake db:setup
 rake admin_creator:create[YOUR_EMAIL,YOUR_PASSWORD]
 rails s
 ```
+#### Admin Login
+
+The admin links are intentionally hidden from regular users, you can log in as an admin by visiting this path
+
+* http://localhost:3000/admins/sign_in
 
 ## Where is this going?
 
