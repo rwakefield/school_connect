@@ -26,7 +26,7 @@ As stated before, you will be able to post messages to a users dashboard using t
 - [x] Add pagination to the get schools api
 - [x] Associate user with school on login
 - [x] Create messages table
-- [ ] Associate messages table with users school
+- [x] Associate messages table with users school
 - [ ] Create dashboard section for school messages
 - [ ] Display messages on the school show page
 - [ ] Post messages locally using api

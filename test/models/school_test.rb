@@ -16,6 +16,13 @@ describe 'School' do
       School.count.must_equal 1
       User.count.must_equal 1
     end
+
+    it 'has_many school_messages' do
+      create :school_message
+      school = School.first
+      school_message = SchoolMessage.first
+      school.school_messages.must_equal [school_message]
+    end
   end
 
   describe 'dependent data' do
@@ -24,6 +31,13 @@ describe 'School' do
       school = School.first
       school.destroy
       UserConnector.count.must_equal 0
+    end
+
+    it 'must remove related school_messages when self is destroyed' do
+      create :school_message
+      school = School.first
+      school.destroy
+      Message.count.must_equal 0
     end
   end
 
