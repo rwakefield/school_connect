@@ -35,6 +35,17 @@ describe 'UserConnectorPresenter' do
       }
       presenter.school_mappings.must_equal [expected_result]
     end
+
+    it 'will provide three columns of mappings' do
+      10.times do
+        create :school
+      end
+      user = create :user
+      presenter = UserConnectorPresenter.new(presented_user: user, connector_params: {})
+      presenter.column_one_mappings.size.must_equal 4
+      presenter.column_two_mappings.size.must_equal 4
+      presenter.column_three_mappings.size.must_equal 2
+    end
   end
 
   describe '#school_ids' do

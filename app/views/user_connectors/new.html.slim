@@ -1,9 +1,22 @@
-h3
-  | Connect to Schools
+.container
+  .row
+    .col-10
+      h3
+        | Connect to Schools
+    .col-2
+      .btn-group.float-right
+        = link_to 'Check All', 'javascript:void(0);', id: 'checkAllSchools', class: 'btn btn-sm btn-secondary d-none'
+        = link_to 'Unheck All', 'javascript:void(0);', id: 'uncheckAllSchools', class: 'btn btn-sm btn-secondary d-none'
 = form_tag user_connectors_path, method: :post do
-  - user_connector_presenter.school_mappings.each do |school_mapping|
-    .form-check
-      label id="#{school_mapping[:box_id]}" class = 'form-check-label'
-        = check_box_tag school_mapping[:box_id], school_mapping[:school_id], school_mapping[:is_enabled], name: 'user_connector[school_ids][]', class: 'form-check-input'
-        = school_mapping[:school_name]
+  .form-group.container#school-checks
+    .row
+      .col-4
+        - user_connector_presenter.column_one_mappings.each do |school_mapping|
+          = render partial: 'school_mapping', locals: { mapping: school_mapping }
+      .col-4
+        - user_connector_presenter.column_two_mappings.each do |school_mapping|
+          = render partial: 'school_mapping', locals: { mapping: school_mapping }
+      .col-4
+        - user_connector_presenter.column_three_mappings.each do |school_mapping|
+          = render partial: 'school_mapping', locals: { mapping: school_mapping }
   = submit_tag 'Connect', class: 'btn btn-sm btn-primary'
