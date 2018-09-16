@@ -108,7 +108,6 @@ class Admins::DashboardControllerTest < ActionDispatch::IntegrationTest
       delete admins_school_path(school)
       assert_response :found
       assert_redirected_to admins_schools_path
-      School.count.must_equal 0
     end
   end
 end
