@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :schools, only: [:index, :show]
-      resources :schools do
+      resources :schools, only: [:index, :show] do
         resources :messages, only: [:index, :show, :create, :update]
       end
     end
@@ -23,9 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :user_connectors, only: [:new, :create]
-  resources :schools, only: [:index, :show]
-
-  resources :schools do
+  resources :schools, only: [:index, :show] do
     resources :messages, only: [:show]
   end
 
