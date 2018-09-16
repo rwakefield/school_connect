@@ -7,5 +7,6 @@ class SchoolsController < ApplicationController
 
   def show
     @school = current_user.schools.find(params[:id])
+    @messages = @school.school_messages.order('created_at desc').paginate(page: params[:page])
   end
 end

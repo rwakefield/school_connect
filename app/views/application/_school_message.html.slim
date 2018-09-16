@@ -1,0 +1,7 @@
+li.list-group-item
+  span.message-header
+    = message.header
+  span.message-body
+    = message.body
+  span.message-link
+    = link_to 'View', school_message_path(message.school, message)

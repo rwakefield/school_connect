@@ -1,2 +1,15 @@
-h3
-  = "#{@school.name}"
+- if @school.school_messages.empty?
+  h3
+    = "#{@school.name}"
+  .lead
+    | There are no messages to show
+- else
+  .card
+    .card-header
+      h5.card-title
+        = "#{@school.name} Messages"
+    .card-body
+      .card-link
+          = will_paginate(@messages)
+    ul.list-group.list-group-flush
+      = render partial: 'school_message', collection: @messages, as: :message

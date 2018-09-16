@@ -28,7 +28,7 @@ As stated before, you will be able to post messages to a users dashboard using t
 - [x] Create messages table
 - [x] Associate messages table with users school
 - [x] Create dashboard section for school messages
-- [ ] Display messages on the school show page
+- [x] Display messages on the school show page
 - [x] Restrict messages show to filter user schools
 - [ ] Post messages locally using api
 - [ ] Allow admins to delete messages
