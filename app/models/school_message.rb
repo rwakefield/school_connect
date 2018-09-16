@@ -1,0 +1,2 @@
+class SchoolMessage < Message
+end

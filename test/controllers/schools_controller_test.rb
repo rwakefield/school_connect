@@ -25,10 +25,11 @@ class SchoolsControllerTest < ActionDispatch::IntegrationTest
     end
 
     it 'will respond success when logged in as user' do
-      user = FactoryBot.create(:user, :connected)
       school = FactoryBot.create(:school)
+      user = FactoryBot.create(:user, :connected, schools: [school])
+      sign_in user
       get school_path(school)
-      assert_redirected_to user_session_path
+      assert_response :success
     end
   end
 end

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :user_connectors, only: [:new, :create]
   resources :schools, only: [:index, :show]
+  resources :messages, only: [:show]
 
   root 'dashboard#index'
 end
