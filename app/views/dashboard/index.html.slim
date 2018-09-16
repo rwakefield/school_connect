@@ -1,2 +1,5 @@
 h2
   | Dashboard
+
+- @schools.each do |school|
+  = render partial: 'school_messages', locals: { school: school }

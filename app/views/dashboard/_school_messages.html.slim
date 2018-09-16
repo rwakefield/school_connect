@@ -1,0 +1,18 @@
+- unless school.school_messages.empty?
+  .card
+    .card-header
+      h5.card-title
+        = "#{school.name} Messages"
+    ul.list-group.list-group-flush
+      - school.school_messages.order('created_at desc').limit(5).each do |message|
+        li.list-group-item
+          span.message-header
+            = message.header
+          span.message-body
+            = message.body
+          span.message-link
+            = link_to 'View', message_path(message)
+    .card-body
+      = link_to 'All Messages', school_path(school), class: 'card-link'
+
+
