@@ -1,0 +1,9 @@
+h3
+  | Connect to Schools
+= form_tag user_connectors_path, method: :post do
+  - user_connector_presenter.school_mappings.each do |school_mapping|
+    .form-check
+      label id="#{school_mapping[:box_id]}" class = 'form-check-label'
+        = check_box_tag school_mapping[:box_id], school_mapping[:school_id], school_mapping[:is_enabled], name: 'user_connector[school_ids][]', class: 'form-check-input'
+        = school_mapping[:school_name]
+  = submit_tag 'Connect', class: 'btn btn-sm btn-primary'

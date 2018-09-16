@@ -10,6 +10,10 @@ class MiniTest::Spec
   before :each do
     DatabaseCleaner.clean
   end
+
+  after :each do
+    DatabaseCleaner.clean
+  end
 end
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`

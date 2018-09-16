@@ -4,5 +4,8 @@ nav.navbar
       = link_to root_path, class: 'nav-link' do
         = fa_icon 'home', text: 'Dashboard'
     li.nav-item
+      = link_to new_user_connector_path, class: 'nav-link' do
+        = fa_icon 'link', text: 'Manage Connections'
+    li.nav-item
       = link_to schools_path, class: 'nav-link' do
         = fa_icon 'institution', text: 'Schools'

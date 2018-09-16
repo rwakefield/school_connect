@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     root 'dashboard#index'
   end
 
+  resources :user_connectors, only: [:new, :create]
   resources :schools, only: [:index, :show]
 
   root 'dashboard#index'

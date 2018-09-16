@@ -6,6 +6,18 @@ describe 'User' do
     user.valid?.must_equal true
   end
 
+  describe 'relations' do
+    it 'will have many schools through user_conectors' do
+      create :user_connector
+      user = User.first
+      school = School.first
+
+      user.schools.must_equal [school]
+      User.count.must_equal 1
+      School.count.must_equal 1
+    end
+  end
+
   describe 'validations' do
     it 'must validate presence of email' do
       user = build :user, email: nil
