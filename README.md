@@ -29,7 +29,7 @@ As stated before, you will be able to post messages to a users dashboard using t
 - [x] Associate messages table with users school
 - [x] Create dashboard section for school messages
 - [ ] Display messages on the school show page
-- [ ] Restrict messages show to filter user schools
+- [x] Restrict messages show to filter user schools
 - [ ] Post messages locally using api
 - [ ] Allow admins to delete messages
 - [ ] Build second app to post messages to schools (not sure exactly what this will look like)

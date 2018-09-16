@@ -5,16 +5,30 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
 
   describe 'GET #show' do
     it 'will redirect if not logged in as user' do
-      message = FactoryBot.create(:message)
-      get message_path(message)
+      FactoryBot.create(:school_message)
+      message = Message.first
+      school = School.first
+      get school_message_path(school, message)
       assert_redirected_to user_session_path
     end
 
-    it 'will respond success when logged in as user' do
+    it 'will redirect when logged in as user and user is not attached to school' do
+      FactoryBot.create(:school_message)
+      school = School.first
+      message = Message.first
       user = FactoryBot.create(:user, :connected)
-      message = FactoryBot.create(:message)
       sign_in user
-      get message_path(message)
+      get school_message_path(school, message)
+      assert_redirected_to root_path
+    end
+
+    it 'will respond success when logged in as user and user is attached to school' do
+      FactoryBot.create(:school_message)
+      school = School.first
+      message = Message.first
+      user = FactoryBot.create(:user, :connected, schools: [school])
+      sign_in user
+      get school_message_path(school, message)
       assert_response :success
     end
   end

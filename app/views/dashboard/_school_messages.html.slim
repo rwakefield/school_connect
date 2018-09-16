@@ -11,7 +11,7 @@
           span.message-body
             = message.body
           span.message-link
-            = link_to 'View', message_path(message)
+            = link_to 'View', school_message_path(school, message)
     .card-body
       = link_to 'All Messages', school_path(school), class: 'card-link'
 
