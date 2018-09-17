@@ -1,1 +1,1 @@
-json.partial! partial: 'school', locals: { school: @school }
+json.partial! partial: 'school', locals: { school: school }

@@ -39,4 +39,15 @@ class Api::V1::MessagesControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to api_v1_school_message_url(school, message, format: :json)
     end
   end
+
+  describe 'DELETE #delete' do
+    it 'will redirect to the message api when successul' do
+      FactoryBot.create(:school_message)
+      school = School.first
+      message = Message.first
+      assert_difference 'Message.count', -1 do
+        delete api_v1_school_message_url(school, message, format: :json)
+      end
+    end
+  end
 end

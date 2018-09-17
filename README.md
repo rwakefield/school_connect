@@ -40,7 +40,7 @@ As stated before, you will be able to post messages to a users dashboard using t
 - [x] Link to messages api on school api
 - [x] Post messages locally using api
 - [x] Patch messages locally using api
-- [ ] Delete messages locally using api
+- [x] Delete messages locally using api
 - [ ] Allow admins to delete messages
 - [ ] Build second app to post messages to schools (not sure exactly what this will look like)
 - [ ] Secure API with some token based system (probably JsonWebToken but I haven’t really thought about that yet)

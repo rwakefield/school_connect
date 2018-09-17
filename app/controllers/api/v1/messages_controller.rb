@@ -1,18 +1,14 @@
 class Api::V1::MessagesController < ApiController
+  helper_method :messages, :message, :paginator, :school
+
   def index
-    @school = School.find(params[:school_id])
-    @paginator = JsonPaginator.new(collection: @school.school_messages, current_page: params[:page], per_page: params[:per_page])
-    @messages = @paginator.paginated_collection
   end
 
   def show
-    @school = School.find(params[:school_id])
-    @message = @school.school_messages.find(params[:id])
   end
 
   def create
-    school = School.find(params[:school_id])
-    message = school.school_messages.new(message_params)
+    @message = school.school_messages.new(message_params)
 
     if message.save
       redirect_to api_v1_school_message_url(school, message, format: :json)
@@ -22,9 +18,6 @@ class Api::V1::MessagesController < ApiController
   end
 
   def update
-    school = School.find(params[:school_id])
-    message = school.school_messages.find(params[:id])
-
     if message.update(message_params)
       redirect_to api_v1_school_message_url(school, message, format: :json)
     else
@@ -32,9 +25,30 @@ class Api::V1::MessagesController < ApiController
     end
   end
 
+  def destroy
+    message.destroy
+    redirect_to api_v1_school_messages_url(school, format: :json)
+  end
+
   private
+
+  def message
+    @message ||= school.school_messages.find(params[:id])
+  end
+
+  def messages
+    @messages ||= paginator.paginated_collection
+  end
 
   def message_params
     params.require(:message).permit(:header, :body)
+  end
+
+  def paginator
+    @paginator ||= JsonPaginator.new(collection: school.school_messages, current_page: params[:page], per_page: params[:per_page])
+  end
+
+  def school
+    @school ||= School.find(params[:school_id])
   end
 end
