@@ -41,7 +41,11 @@ h2 {
   margin-bottom: 25px;
 }
 
-.card .message-header {
+.id-col {
+  width: 50px;
+}
+
+.message-header {
   display: inline-block;
   font-weight: bold;
   height: 30px;
@@ -49,7 +53,7 @@ h2 {
   vertical-align: middle;
 }
 
-.card .message-body {
+.message-body {
   display: inline-block;
   height: 30px;
   margin-right: 5px;
@@ -97,6 +101,10 @@ h2 {
 
 .pagination a, .pagination em, .pagination span {
   padding: 5px;
+}
+
+.smaller-column {
+  width: 250px;
 }
 
 .sidebar {

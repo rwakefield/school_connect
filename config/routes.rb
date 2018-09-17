@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   authenticated :admin do
     namespace :admins do
       root 'dashboard#index'
-      resources :schools
+      resources :schools do
+        resources :messages, only: [:destroy]
+      end
     end
   end
 

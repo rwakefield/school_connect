@@ -105,9 +105,9 @@ class Admins::DashboardControllerTest < ActionDispatch::IntegrationTest
       admin = FactoryBot.create(:admin)
       school = FactoryBot.create(:school)
       sign_in admin
-      delete admins_school_path(school)
-      assert_response :found
-      assert_redirected_to admins_schools_path
+      assert_difference 'School.count',-1 do
+        delete admins_school_path(school)
+      end
     end
   end
 end

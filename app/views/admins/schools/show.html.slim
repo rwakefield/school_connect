@@ -1,2 +1,34 @@
 h3
   = "#{school.name}"
+
+
+- if @messages.empty?
+  .lead
+    | There are no messages to display
+- else
+  = will_paginate @messages
+  table.table.table-sm.table-striped.table-bordered
+    thead
+      tr
+        th.id-col scope='col'
+          | ID
+        th.smaller-column scope='col'
+          | Message Header
+        th scope='col'
+          | Message Body
+        th.actions scope='col'
+          | Actions
+    tbody
+      - @messages.each do |message|
+        tr
+          td
+            = message.id
+          td
+            = message.header
+          td
+            span.message-body
+              = message.body
+          td.actions
+            .btn-group
+              = link_to admins_school_message_path(school, message), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-sm btn-danger' do
+                = fa_icon 'remove', text: 'Delete'

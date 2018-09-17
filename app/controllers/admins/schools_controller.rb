@@ -25,10 +25,13 @@ class Admins::SchoolsController < ApplicationController
   def update
     if school.update(school_params)
       redirect_to admins_schools_path, notice: "#{school.name} has been updated"
+    else
+      render 'edit'
     end
   end
 
   def show
+    @messages = school.school_messages.paginate(page: params[:page])
   end
 
   def destroy
