@@ -1,0 +1,7 @@
+nav.navbar.navbar-dark.sticky-top.bg-dark
+  = link_to 'School Connect', root_path, class: 'navbar-brand'
+  .btn-group.navbar-right
+    = link_to edit_user_registration_path, class: 'btn' do
+      = fa_icon('user-circle-o', text: 'User')
+    = link_to destroy_user_session_path, method: :delete, class: 'btn' do
+      = fa_icon('sign-out', text: 'Logout')

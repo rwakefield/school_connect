@@ -1,0 +1,8 @@
+#main-container.container-fluid
+  .row
+    .col-md-2
+      = render partial: sidebar_name
+    .col
+      = render partial: 'flash_messages'
+      #view-content
+        = yield

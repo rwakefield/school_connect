@@ -19,7 +19,7 @@ class UserConnectorsController < ApplicationController
   private
 
   def user_connector_presenter
-    UserConnectorPresenter.new(presented_user: current_user, connector_params: params)
+    @user_connector_presenter ||= UserConnectorPresenter.new(presented_user: current_user, connector_params: params)
   end
 
 end

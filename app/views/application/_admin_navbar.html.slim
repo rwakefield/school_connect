@@ -1,0 +1,5 @@
+nav.navbar.navbar-dark.sticky-top.bg-dark
+  = link_to 'School Connect', root_path, class: 'navbar-brand'
+  .btn-group.navbar-right
+    = link_to destroy_admin_session_path, method: :delete, class: 'btn' do
+      = fa_icon('sign-out', text: 'Logout')
