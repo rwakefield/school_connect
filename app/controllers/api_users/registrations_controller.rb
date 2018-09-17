@@ -2,13 +2,13 @@ class ApiUsers::RegistrationsController < Devise::RegistrationsController
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format.json? }
 
   def new
+    @api_user = ApiUser.new
   end
 
   def create
-    @api_user = ApiUser.new(email: params[:email], password: params[:password], password_confirmation: params[:password])
-
+    @api_user = ApiUser.new(registration_params)
     if @api_user.save
-      render json: response_json
+      render json: { "Bearer Token" => JWTWrapper.encode({ api_user_id: @api_user.id }) }
     else
       render :new
     end
@@ -16,9 +16,7 @@ class ApiUsers::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def response_json
-    links_section = { "#POST" => new_api_user_session_url }
-    params_section = { email: @api_user.email, password: params[:password] }
-    { "_links" => links_section, "params" => params_section }.to_json
+  def registration_params
+    params.require(:registration).permit(:email, :password)
   end
 end

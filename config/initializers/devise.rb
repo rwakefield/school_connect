@@ -3,13 +3,18 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  config.warden do |manager|
+    manager.strategies.add(:jwt, Devise::Strategies::JsonWebToken)
+    manager.default_strategies(scope: :api_user).unshift :jwt
+  end
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'ed83b05632f447d358f235c886ed5da82452797abf7044bd0e09fffaea1d8c2f94f5f4f2a7e105c1e18212bbd26c0c8c92455eed458ae7733317fa77e4db077a'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
