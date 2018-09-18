@@ -1,0 +1,129 @@
+FORMAT: 1A
+HOST: http://localhost:3000
+
+# school_connect
+
+Provides an interface for sending messages to students conencted to different schools
+
++ Request
+    + Header
+        + Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhcGlfdXNlcl9pZCI6MSwiZXhwIjoxNTM3Mzc1MTQyfQ.RfbKfLMeXCP7kb4bwEIPs4rexXBmzPLzG_1QnNJQUxg
+    
+## Schools Collection [/schools]
+
+### List All Schools [GET]
+
++ Response 200 (application/json)
+
+        {
+                "_links": {
+                        "self": "http://localhost:3000/api/v1/schools?page=1",
+                        "next": "http://localhost:3000/api/v1/schools?page=2"
+                },
+                "perPage=": "3",
+                "totalPages=": "34",
+                "totalCount=": "100",
+                "_embedded": {
+                        "schools": [
+                                {
+                                        "_links": {
+                                                "self": "http://localhost:3000/api/v1/schools/1",
+                                                "messages": "http://localhost:3000/api/v1/schools/1/messages"
+                                        },
+                                        "name": "Massachusetts Institute of Technology (MIT)",
+                                        "created_at": "2018-09-18T16:37:05.212Z",
+                                        "updated_at": "2018-09-18T16:37:05.212Z"
+                                },
+                                {
+                                        "_links": {
+                                                "self": "http://localhost:3000/api/v1/schools/2",
+                                                "messages": "http://localhost:3000/api/v1/schools/2/messages"
+                                        },
+                                        "name": "Stanford University",
+                                        "created_at": "2018-09-18T16:37:05.216Z",
+                                        "updated_at": "2018-09-18T16:37:05.216Z"
+                                        },
+                                        {
+                                        "_links": {
+                                                "self": "http://localhost:3000/api/v1/schools/3",
+                                                "messages": "http://localhost:3000/api/v1/schools/3/messages"
+                                        },
+                                        "name": "Harvard University",
+                                        "created_at": "2018-09-18T16:37:05.218Z",
+                                        "updated_at": "2018-09-18T16:37:05.218Z"
+                                        }
+                                ]
+                        }
+        }
+
+
+## School [/school]
+
+### Show School  [GET]
+
++ Response 200 (application/json)
+
+        {
+            "_links": {
+                "self": "http://localhost:3000/api/v1/schools/1",
+                "messages": "http://localhost:3000/api/v1/schools/1/messages"
+            },
+            "name": "Massachusetts Institute of Technology (MIT)",
+            "created_at": "2018-09-18T16:37:05.212Z",
+            "updated_at": "2018-09-18T16:37:05.212Z"
+        }
+
+## School Messages [/schools/:id/messages]
+
+### Show All Messages for School [GET]
+
++ Response 200 (application/json)
+
+        {
+            "_links": {
+                "self": "http://localhost:3000/api/v1/schools/1/messages?page=1"
+            },
+            "perPage=": "10",
+            "totalPages=": "1",
+            "totalCount=": "1",
+            "_embedded": {
+                "messages": [
+                    {
+                        "_links": {
+                            "self": "http://localhost:3000/api/v1/schools/1/messages/1"
+                        },
+                        "header": "Message Header",
+                        "body": "Message Body",
+                        "created_at": "2018-09-18T16:54:58.981Z",
+                        "updated_at": "2018-09-18T16:54:58.981Z"
+                    }
+                ]
+            }
+        }
+        
+### Create a New Message [POST]
+
+You may create a new message using this action. It takes a JSON object
+containing the message header and body.
+
++ Request (application/json)
+
+        { "header": "Message Header", "body": "Message Body" }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: schools/1/messages/1
+
+    + Body
+
+            {
+                "_links": {
+                    "self": "http://localhost:3000/api/v1/schools/1/messages/1"
+                },
+                "header": "Message Header",
+                "body": "Message Body",
+                "created_at": "2018-09-18T16:54:58.981Z",
+                "updated_at": "2018-09-18T16:54:58.981Z"
+            }
