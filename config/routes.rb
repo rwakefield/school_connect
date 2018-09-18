@@ -32,4 +32,8 @@ Rails.application.routes.draw do
   end
 
   root 'dashboard#index'
+
+  unauthenticated :user do
+    get 'messenger', to: 'messenger#index'
+  end
 end

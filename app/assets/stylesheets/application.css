@@ -15,6 +15,7 @@
  *= require bootstrap-reboot
  *= require font-awesome
  *= require jquery-ui
+ *= require messenger
  *= require_tree .
  *= require_self
  */
