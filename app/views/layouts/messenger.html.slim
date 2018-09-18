@@ -9,17 +9,14 @@ html
   body
     nav.navbar.navbar-dark.sticky-top.bg-dark
       = link_to 'Messenger', messenger_path, class: 'navbar-brand'
+      .btn-group.nav-right
+        = link_to 'javascript:void(0)', class: 'btn', id: 'sync-schools', data: { api_url: api_v1_schools_url, api_action: 'GET' } do
+          = fa_icon 'institution', text: 'Sync Schools'
+
     #messenger.container-fluid
       .row
         .col-lg-2
-          ul.nav.flex-column.sidebar
-            br
+          ul.nav.flex-column.sidebar#sync-content
         .col
-          #flash-messages
-            - flash.each do |key, value|
-              div class="alert alert-warning alert-dismissible alert-#{key} fade show" role="alert"
-                = value
-                button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                  <span aria-hidden="true">&times;</span>
+          #flash-content
           #view-content
-            = yield
