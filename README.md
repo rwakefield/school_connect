@@ -43,13 +43,17 @@ As stated before, you will be able to post messages to a users dashboard using t
 - [x] Delete messages locally using api
 - [x] Allow admins to delete messages
 - [ ] Build second app to post messages to schools (not sure exactly what this will look like)
-- [ ] Secure API with some token based system (probably JsonWebToken but I haven’t really thought about that yet)
+- [x] Secure API with some token based system (probably JsonWebToken but I haven’t really thought about that yet)
 
 To make this sane I will probably wait until each level of API is working completely before I move on to the next one (so version one of this app will be having the schools getting messages from the other application before I move onto classroom and the others)
 
 ## API Design
 
 For the API I am going with a RESTful API design that will return JSON. I will be adding hypermedia to the API using the Hypertext Application Language (HAL) standard. There is no real reason for this except because I like the way it looks.
+
+#### Workflow
+
+You can see the workflow of the API in this Pull Request https://github.com/rwakefield/school_connect/pull/1
 
 #### Working APIs
 
