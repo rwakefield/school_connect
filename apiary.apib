@@ -9,7 +9,7 @@ Provides an interface for sending messages to students conencted to different sc
     + Header
         + Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhcGlfdXNlcl9pZCI6MSwiZXhwIjoxNTM3Mzc1MTQyfQ.RfbKfLMeXCP7kb4bwEIPs4rexXBmzPLzG_1QnNJQUxg
     
-## Schools Collection [/schools]
+## Schools Collection [api/v1/schools]
 
 ### List All Schools [GET]
 
@@ -57,7 +57,7 @@ Provides an interface for sending messages to students conencted to different sc
         }
 
 
-## School [/school]
+## School [api/v1/school]
 
 ### Show School  [GET]
 
@@ -73,7 +73,7 @@ Provides an interface for sending messages to students conencted to different sc
             "updated_at": "2018-09-18T16:37:05.212Z"
         }
 
-## School Messages [/schools/:id/messages]
+## School Messages [api/v1/schools/:id/messages]
 
 ### Show All Messages for School [GET]
 
@@ -100,6 +100,8 @@ Provides an interface for sending messages to students conencted to different sc
                 ]
             }
         }
+        
+## School Message [api/v1/schools/1/messages]
         
 ### Create a New Message [POST]
 
