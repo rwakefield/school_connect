@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title Messenger
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    nav.navbar.navbar-dark.sticky-top.bg-dark
+      = link_to 'Messenger', messenger_path, class: 'navbar-brand'
+    #messenger.container-fluid
+      .row
+        .col-lg-2
+          ul.nav.flex-column.sidebar
+            br
+        .col
+          #flash-messages
+            - flash.each do |key, value|
+              div class="alert alert-warning alert-dismissible alert-#{key} fade show" role="alert"
+                = value
+                button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                  <span aria-hidden="true">&times;</span>
+          #view-content
+            = yield

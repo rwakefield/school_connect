@@ -1,0 +1,16 @@
+#messenger .container-fluid, #messenger .row {
+  height: 100%;
+}
+
+#messenger .sidebar {
+  background-color: #CCCCCC;
+  bottom: 0;
+  display: block;
+  height: 100%;
+  left: 0;
+  padding-left: 50px;
+  padding-top: 15px;
+  position: fixed;
+  top: 56px;
+  width: 250px;
+}
