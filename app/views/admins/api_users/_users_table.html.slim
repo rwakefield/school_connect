@@ -1,0 +1,16 @@
+table.table.table-sm.table-striped.table-bordered
+  thead
+    tr
+      th scope='col'
+        | Name
+      th.actions scope='col'
+        | Actions
+  tbody
+    - users.each do |user|
+      tr
+        td
+          = user.email
+        td.actions
+          .btn-group
+            = link_to admins_api_user_path(user), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-sm btn-danger' do
+              = fa_icon 'remove', text: 'Delete'
