@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :api_users, path: 'api', controllers: { sessions: 'api_users/sessions', registrations: 'api_users/registrations' }
+
   namespace :api do
     namespace :v1 do
       resources :schools, only: [:index, :show] do
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   authenticated :admin do
     namespace :admins do
       root 'dashboard#index'
+      resources :api_users, only: [:index, :destroy]
       resources :schools do
         resources :messages, only: [:destroy]
       end

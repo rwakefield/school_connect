@@ -3,5 +3,8 @@ ul.nav.flex-column.sidebar
     = link_to root_path, class: 'nav-link' do
       = fa_icon 'home', text: 'Dashboard'
   li.nav-item
+    = link_to admins_api_users_path, class: 'nav-link' do
+      = fa_icon 'users', text: 'Manage Api Users'
+  li.nav-item
     = link_to admins_schools_path, class: 'nav-link' do
       = fa_icon 'institution', text: 'Manage Schools'

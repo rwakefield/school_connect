@@ -1,0 +1,15 @@
+.row
+  .col
+    h3
+      | Manage Api Users
+  .col
+    - unless @api_user_ids == ""
+      .btn-group.float-right
+        = link_to admins_api_user_path(@api_user_ids), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-sm btn-danger' do
+          = fa_icon 'remove', text: 'Delete All Api Users'
+
+- if @api_users.size > 0
+  = render partial: 'users_table', locals: { users: @api_users }
+- else
+  p.lead
+    | There are no API Users

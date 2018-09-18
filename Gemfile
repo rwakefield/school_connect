@@ -56,6 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
+gem 'jwt'
 gem 'minitest-rails'
 gem 'simple_form'
 gem 'slim'
